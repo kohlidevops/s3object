@@ -7,6 +7,6 @@ do
             fileName=`echo $line | awk '{$1=$2=$3=""; print $0}'`
                 size=`echo $line | awk '{print $3}'`
                     if (( $(echo "$size > 12000" | bc -l) )); then
-                                    echo "File size greater than 300 bytes: $fileName"
+                                    echo "File size greater than 12 KB: $fileName"
                                         fi
                                 done
