@@ -1,0 +1,12 @@
+#size-12000 bytes (12 KB)
+#!/bin/bash
+BUCKET_NAME="bucket-name"
+PREFIX="ParentFolder/"
+aws s3 ls "s3://$BUCKET_NAME/$PREFIX" --recursive | while read line;
+do
+            fileName=`echo $line | awk '{$1=$2=$3=""; print $0}'`
+                size=`echo $line | awk '{print $3}'`
+                    if (( $(echo "$size > 12000" | bc -l) )); then
+                                    echo "File size greater than 300 bytes: $fileName"
+                                        fi
+                                done
